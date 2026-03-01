@@ -7,7 +7,6 @@ public class Mage implements Hero {
 
     public Mage(String name) {
         this.name = name;
-        // TODO: tune stats if needed
         this.power = 25;
         this.health = 80;
     }
@@ -24,7 +23,6 @@ public class Mage implements Hero {
 
     @Override
     public void receiveDamage(int amount) {
-        // TODO: enforce min 0
         health -= amount;
         if (health < 0) {
             health = 0;
