@@ -8,7 +8,6 @@ public class EncounterResult {
     private String winner;
     private int rounds;
     private final List<String> battleLog = new ArrayList<>();
-
     public void setWinner(String winner) {
         this.winner = winner;
     }

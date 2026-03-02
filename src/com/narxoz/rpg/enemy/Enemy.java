@@ -1,5 +1,6 @@
 package com.narxoz.rpg.enemy;
 
+
 public interface Enemy {
     String getTitle();
     int getDamage();
