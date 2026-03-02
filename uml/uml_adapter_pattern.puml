@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+interface Combatant {
+  + getName():String
+  + getAttackPower():int
+  + takeDamage(amount: int):void
+  + isAlive():boolean
+}
+
+interface Hero {
+  + getName():String
+  + getPower():int
+  + receiveDamage(amount: int):void
+  + isAlive():boolean
+}
+
+interface Enemy {
+  + getTitle():String
+  + getDamage():int
+  + applyDamage(amount: int):void
+  + isDefeated():boolean
+}
+
+class HeroCombatantAdapter {
+  - hero:Hero
+  + HeroCombatantAdapter(hero: Hero)
+  + getName():String
+  + getAttackPower():int
+  + takeDamage(amount: int):void
+  + isAlive():boolean
+}
+
+class EnemyCombatantAdapter {
+  - enemy:Enemy
+  + EnemyCombatantAdapter(enemy: Enemy)
+  + getName():String
+  + getAttackPower():int
+  + takeDamage(amount: int):void
+  + isAlive():boolean
+}
+
+class BattleEngine {
+  + runEncounter(teamA: List<Combatant>, teamB: List<Combatant>) : EncounterResult
+}
+
+class EncounterResult
+
+HeroCombatantAdapter ..|> Combatant
+EnemyCombatantAdapter ..|> Combatant
+
+HeroCombatantAdapter --> Hero : wraps
+EnemyCombatantAdapter --> Enemy : wraps
+
+BattleEngine ..> Combatant : uses
+BattleEngine ..> EncounterResult : returns
+
+@enduml
+
+HeroCombatantAdapter ..|> Combatant
+EnemyCombatantAdapter ..|> Combatant
+
+HeroCombatantAdapter --> Hero
+EnemyCombatantAdapter --> Enemy
+
+BattleEngine ..> Combatant : uses
+
+@enduml

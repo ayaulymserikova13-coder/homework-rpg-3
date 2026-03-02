@@ -1,0 +1,15 @@
+@startuml
+skinparam classAttributeIconSize 0
+class BattleEngine {
+  - {static} instance:BattleEngine
+  - random:Random
+  - BattleEngine()
+  + {static} getInstance():BattleEngine
+  + setRandomSeed(seed: long):BattleEngine
+  + runEncounter(teamA: List<Combatant>, teamB: List<Combatant>) : EncounterResult
+  + reset():void
+}
+
+BattleEngine ..> Combatant : uses
+BattleEngine ..> EncounterResult : creates
+@enduml
